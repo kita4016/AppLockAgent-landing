@@ -217,15 +217,18 @@ a {
   min-height: 340px;
 }
 
-.phone-screen--carousel .mock-ring {
-  width: 132px;
-  height: 132px;
+.phone-screen--carousel .mock-ring-wrap {
+  width: 148px;
+  height: 148px;
   margin: 0.25rem auto 0.5rem;
-  border-width: 8px;
 }
 
 .phone-screen--carousel .mock-time {
   font-size: 1.55rem;
+}
+
+.phone-screen--carousel .mock-elapsed {
+  font-size: 0.55rem;
 }
 
 .carousel-ui {
@@ -277,17 +280,49 @@ a {
   padding: 0 0.5rem;
 }
 
-.mock-ring {
+.mock-ring-wrap {
+  position: relative;
   width: 180px;
   height: 180px;
   margin: 0 auto 1.25rem;
+  --ring-c: 263.9;
+  --ring-offset: calc(var(--ring-c) * (1 - var(--ring-progress, 0)));
+}
+
+.mock-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.mock-ring-track,
+.mock-ring-fill {
+  fill: none;
+  stroke-width: 8;
+}
+
+.mock-ring-track {
+  stroke: rgba(0, 122, 255, 0.15);
+}
+
+.mock-ring-fill {
+  stroke: #007aff;
+  stroke-linecap: round;
+  stroke-dasharray: var(--ring-c);
+  stroke-dashoffset: var(--ring-offset);
+}
+
+.mock-ring {
+  position: absolute;
+  inset: 12px;
   border-radius: 50%;
-  border: 10px solid rgba(0, 122, 255, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 
 .mock-lock {
@@ -303,6 +338,13 @@ a {
 .mock-label {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.mock-elapsed {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: -0.02em;
 }
 
 .mock-apps {
