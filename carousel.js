@@ -5,6 +5,7 @@
   const root = document.querySelector("[data-phone-carousel]");
   if (!root) return;
 
+  const viewport = root.querySelector(".carousel-viewport");
   const track = root.querySelector("[data-carousel-track]");
   const slides = Array.from(root.querySelectorAll("[data-carousel-slide]"));
   const dots = Array.from(root.querySelectorAll("[data-carousel-dot]"));
@@ -16,6 +17,7 @@
 
   let index = 0;
   let touchStartX = 0;
+  let slideWidthPx = 0;
   let lockRemaining = lockMock
     ? Number(lockMock.dataset.lockRemaining || 0)
     : 0;
@@ -46,9 +48,20 @@
     updateLockMock();
   }
 
+  function measureSlides() {
+    if (!viewport) return;
+    slideWidthPx = viewport.clientWidth;
+    slides.forEach((slide) => {
+      slide.style.width = `${slideWidthPx}px`;
+      slide.style.flexBasis = `${slideWidthPx}px`;
+    });
+    track.style.transform = `translateX(-${index * slideWidthPx}px)`;
+  }
+
   function goTo(i) {
     index = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(-${index * 100}%)`;
+    const offset = slideWidthPx > 0 ? index * slideWidthPx : 0;
+    track.style.transform = `translateX(-${offset}px)`;
     dots.forEach((dot, j) => {
       dot.classList.toggle("is-active", j === index);
       dot.setAttribute("aria-selected", j === index ? "true" : "false");
@@ -92,7 +105,13 @@
     }
   });
 
+  window.addEventListener("resize", measureSlides);
+  window.addEventListener("orientationchange", () => {
+    setTimeout(measureSlides, 100);
+  });
+
   updateLockMock();
   setInterval(tickLockMock, 1000);
+  measureSlides();
   goTo(0);
 })();

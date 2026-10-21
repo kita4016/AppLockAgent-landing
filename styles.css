@@ -24,6 +24,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light;
+  overflow-x: clip;
 }
 
 body {
@@ -33,6 +34,11 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
+  overflow-x: clip;
+}
+
+main {
+  overflow-x: clip;
 }
 
 img {
@@ -63,7 +69,21 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   padding: 0.75rem 0;
+  min-width: 0;
+}
+
+.header-cta {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.logo-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .logo {
@@ -131,6 +151,16 @@ a {
   align-items: center;
 }
 
+.hero-grid > * {
+  min-width: 0;
+}
+
+.hero-visual {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .eyebrow {
   font-size: 0.8rem;
   font-weight: 600;
@@ -160,14 +190,25 @@ a {
   gap: 0.75rem;
 }
 
+.hero-copy {
+  min-width: 0;
+}
+
+.hero h1,
+.lead {
+  overflow-wrap: anywhere;
+}
+
 /* Phone mock */
 .phone {
   width: min(100%, 280px);
+  max-width: 100%;
   margin-inline: auto;
   background: #1d1d1f;
   border-radius: 36px;
   padding: 12px;
   box-shadow: var(--shadow);
+  box-sizing: border-box;
 }
 
 .phone-notch {
@@ -198,18 +239,23 @@ a {
   overflow: hidden;
   flex: 1 1 auto;
   min-height: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .carousel-track {
   display: flex;
   height: 100%;
+  width: max-content;
+  max-width: none;
   transition: transform 0.35s ease;
   align-items: stretch;
+  will-change: transform;
 }
 
 .carousel-slide {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 auto;
+  box-sizing: border-box;
   height: 100%;
   padding: 0 0.45rem;
   display: flex;
@@ -745,6 +791,10 @@ section h2 {
 
 /* iPhone 14 / 15 / 16 / 17（〜430px）向け */
 @media (max-width: 480px) {
+  .container {
+    width: min(100% - 1.25rem, var(--max));
+  }
+
   .hero {
     padding: 1.75rem 0 2.25rem;
   }
@@ -753,13 +803,17 @@ section h2 {
     gap: 1.75rem;
   }
 
-  .hero-visual {
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
     width: 100%;
-    max-width: 100%;
   }
 
   .phone {
-    width: min(100%, clamp(252px, 78vw, 300px));
+    width: 100%;
+    max-width: min(280px, 100%);
   }
 
   .phone-screen--carousel {
