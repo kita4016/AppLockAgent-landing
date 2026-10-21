@@ -227,10 +227,6 @@ a {
   font-size: 1.55rem;
 }
 
-.phone-screen--carousel .mock-elapsed {
-  font-size: 0.55rem;
-}
-
 .carousel-ui {
   display: flex;
   align-items: center;
@@ -338,13 +334,6 @@ a {
 .mock-label {
   font-size: 0.85rem;
   color: var(--text-muted);
-}
-
-.mock-elapsed {
-  font-size: 0.62rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: -0.02em;
 }
 
 .mock-apps {

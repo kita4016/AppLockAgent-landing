@@ -11,9 +11,40 @@
   const caption = root.querySelector("[data-carousel-caption]");
   const prevBtn = root.querySelector("[data-carousel-prev]");
   const nextBtn = root.querySelector("[data-carousel-next]");
+  const lockMock = root.querySelector("[data-mock-lock]");
+  const countdownEl = root.querySelector("[data-mock-countdown]");
 
   let index = 0;
   let touchStartX = 0;
+  let lockRemaining = lockMock
+    ? Number(lockMock.dataset.lockRemaining || 0)
+    : 0;
+  const lockTotal = lockMock ? Number(lockMock.dataset.lockTotal || 1) : 1;
+
+  function formatCountdown(seconds) {
+    const total = Math.max(0, Math.ceil(seconds));
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    if (h > 0) {
+      return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  }
+
+  function updateLockMock() {
+    if (!lockMock || !countdownEl) return;
+    const elapsed = Math.max(0, lockTotal - lockRemaining);
+    const progress = lockTotal > 0 ? elapsed / lockTotal : 0;
+    lockMock.style.setProperty("--ring-progress", String(progress));
+    countdownEl.textContent = formatCountdown(lockRemaining);
+  }
+
+  function tickLockMock() {
+    if (index !== 0 || !lockMock) return;
+    if (lockRemaining > 0) lockRemaining -= 1;
+    updateLockMock();
+  }
 
   function goTo(i) {
     index = (i + slides.length) % slides.length;
@@ -25,6 +56,7 @@
     if (caption && slides[index].dataset.caption) {
       caption.textContent = slides[index].dataset.caption;
     }
+    if (index === 0) updateLockMock();
   }
 
   prevBtn?.addEventListener("click", () => goTo(index - 1));
@@ -60,5 +92,7 @@
     }
   });
 
+  updateLockMock();
+  setInterval(tickLockMock, 1000);
   goTo(0);
 })();

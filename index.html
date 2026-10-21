@@ -48,16 +48,20 @@
                       data-carousel-slide
                       data-caption="集中タイム中。残り時間とロック中のアプリがひと目でわかります。"
                     >
-                      <div class="mock-ring-wrap" style="--ring-progress: 0.25">
+                      <div
+                        class="mock-ring-wrap"
+                        data-mock-lock
+                        data-lock-total="3600"
+                        data-lock-remaining="2698"
+                      >
                         <svg class="mock-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
                           <circle class="mock-ring-track" cx="50" cy="50" r="42" />
                           <circle class="mock-ring-fill" cx="50" cy="50" r="42" />
                         </svg>
                         <div class="mock-ring">
                           <span class="mock-lock">🔒</span>
-                          <span class="mock-time">45:00</span>
+                          <span class="mock-time" data-mock-countdown>44:58</span>
                           <span class="mock-label">集中タイム</span>
-                          <span class="mock-elapsed">60分中 · 15分経過</span>
                         </div>
                       </div>
                       <div class="mock-card">
