@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="集中ロックは、選んだアプリだけを時間指定でブロックする iOS 向け集中アプリ。Screen Time と連携し、集中タイムを守ります。"
+    />
+    <title>集中ロック — スマホの誘惑から、時間を取り戻す</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#top">
+          <span class="logo-icon" aria-hidden="true">🔒</span>
+          <span class="logo-text">集中ロック</span>
+        </a>
+        <a class="btn btn-small header-cta" href="#download">App Store</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">iOS · Screen Time 連携</p>
+            <h1>スマホの誘惑から、<br />時間を取り戻す。</h1>
+            <p class="lead">
+              集中ロックは、<strong>選んだアプリだけ</strong>を時間指定でブロック。
+              タイマーが終わるまで、SNS やゲームに手が伸びる前に「集中タイム」を守ります。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#download">App Store で入手</a>
+              <a class="btn btn-ghost" href="#how">使い方を見る</a>
+            </div>
+          </div>
+          <div class="hero-visual" data-phone-carousel>
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen phone-screen--carousel">
+                <div class="carousel-viewport">
+                  <div class="carousel-track" data-carousel-track>
+                    <!-- 1. ロック中 -->
+                    <div
+                      class="carousel-slide"
+                      data-carousel-slide
+                      data-caption="集中タイム中。残り時間とロック中のアプリがひと目でわかります。"
+                    >
+                      <div class="mock-ring">
+                        <span class="mock-lock">🔒</span>
+                        <span class="mock-time">45:00</span>
+                        <span class="mock-label">集中タイム</span>
+                      </div>
+                      <div class="mock-card">
+                        <p class="mock-card-title">🔒 ロック中 <span>アプリ 3</span></p>
+                        <ul class="mock-apps mock-apps--rows">
+                          <li><span class="app-icon app-icon--tiktok">♪</span> TikTok</li>
+                          <li><span class="app-icon app-icon--yt">▶</span> YouTube</li>
+                          <li><span class="app-icon app-icon--x">𝕏</span> X</li>
+                        </ul>
+                      </div>
+                      <button type="button" class="mock-btn mock-btn--orange" tabindex="-1">
+                        今すぐロックを解除する
+                      </button>
+                    </div>
+
+                    <!-- 2. ホーム -->
+                    <div
+                      class="carousel-slide"
+                      data-carousel-slide
+                      data-caption="ロックするアプリと時間を選んで、ワンタップで集中を開始。"
+                    >
+                      <p class="mock-nav-title">集中ロック</p>
+                      <div class="mock-list">
+                        <div class="mock-list-row">
+                          <span>アプリを選ぶ</span>
+                          <span class="mock-muted">アプリ3</span>
+                        </div>
+                      </div>
+                      <p class="mock-section-label">ロック時間</p>
+                      <div class="mock-chips">
+                        <span>15m</span><span>30m</span><span>45m</span
+                        ><span class="is-on">60m</span>
+                      </div>
+                      <button type="button" class="mock-btn mock-btn--blue" tabindex="-1">
+                        60分ロックを開始
+                      </button>
+                    </div>
+
+                    <!-- 3. アプリ選択 -->
+                    <div
+                      class="carousel-slide"
+                      data-carousel-slide
+                      data-caption="直近7日の使用時間つきで、よく開くアプリから選べます。"
+                    >
+                      <p class="mock-nav-title mock-nav-title--sm">ロックするアプリを選択</p>
+                      <ul class="mock-picker">
+                        <li>
+                          <span class="app-icon app-icon--tiktok">♪</span>
+                          <span class="mock-picker-name">TikTok</span>
+                          <span class="mock-muted">使用 2時間（直近7日）</span>
+                          <span class="mock-check">✓</span>
+                        </li>
+                        <li>
+                          <span class="app-icon app-icon--yt">▶</span>
+                          <span class="mock-picker-name">YouTube</span>
+                          <span class="mock-muted">使用 45分（直近7日）</span>
+                          <span class="mock-check">✓</span>
+                        </li>
+                        <li>
+                          <span class="app-icon app-icon--x">𝕏</span>
+                          <span class="mock-picker-name">X</span>
+                          <span class="mock-muted">使用 30分（直近7日）</span>
+                          <span class="mock-check">✓</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- 4. シールド -->
+                    <div
+                      class="carousel-slide carousel-slide--shield"
+                      data-carousel-slide
+                      data-caption="ブロックしたアプリを開くと、OS レベルで起動できません。"
+                    >
+                      <div class="mock-shield-blur"></div>
+                      <div class="mock-shield-content">
+                        <span class="mock-shield-lock">🔒</span>
+                        <p class="mock-shield-title">集中タイムです</p>
+                        <p class="mock-shield-sub">
+                          ロック時間が終わるまで、このアプリは使えません。
+                        </p>
+                        <button type="button" class="mock-btn mock-btn--blue mock-btn--compact" tabindex="-1">
+                          閉じる
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-ui">
+              <button type="button" class="carousel-arrow" data-carousel-prev aria-label="前の画面">
+                ‹
+              </button>
+              <div class="carousel-dots" role="tablist" aria-label="アプリ画面">
+                <button type="button" class="carousel-dot is-active" data-carousel-dot role="tab" aria-selected="true" aria-label="ロック中"></button>
+                <button type="button" class="carousel-dot" data-carousel-dot role="tab" aria-selected="false" aria-label="ホーム"></button>
+                <button type="button" class="carousel-dot" data-carousel-dot role="tab" aria-selected="false" aria-label="アプリ選択"></button>
+                <button type="button" class="carousel-dot" data-carousel-dot role="tab" aria-selected="false" aria-label="シールド"></button>
+              </div>
+              <button type="button" class="carousel-arrow" data-carousel-next aria-label="次の画面">
+                ›
+              </button>
+            </div>
+            <p class="carousel-caption" data-carousel-caption>
+              集中タイム中。残り時間とロック中のアプリがひと目でわかります。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container">
+          <h2>こんな人向け</h2>
+          <p class="section-lead">
+            意志の力だけでは続かない——だから、OS レベルでロックします。
+          </p>
+          <ul class="feature-grid">
+            <li class="feature-card">
+              <h3>アプリを選んでロック</h3>
+              <p>
+                全部ブロックではなく、<strong>分散の原因だけ</strong>を指定。
+                直近7日の使用時間を参考に、よく開くアプリから選べます。
+              </p>
+            </li>
+            <li class="feature-card">
+              <h3>15分〜4時間</h3>
+              <p>
+                短い集中から長時間の作業まで、プリセットから時間を選んで開始。
+                カウントダウンで残り時間がひと目でわかります。
+              </p>
+            </li>
+            <li class="feature-card">
+              <h3>本当に使えない</h3>
+              <p>
+                ロック中にブロック対象を開くと、<strong>「集中タイムです」</strong>の
+                シールド画面が表示され、アプリは起動できません。
+              </p>
+            </li>
+            <li class="feature-card">
+              <h3>解除は意図的に</h3>
+              <p>
+                時間前の解除は有料（消耗型）。本当に必要なとき用に、
+                <strong>1週間に1回</strong>の無料緊急解除も用意しています。
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="how" id="how">
+        <div class="container">
+          <h2>3ステップで開始</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <div>
+                <h3>Screen Time を許可</h3>
+                <p>初回のみ、Apple の Screen Time API へのアクセスを許可します。</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div>
+                <h3>アプリと時間を選ぶ</h3>
+                <p>ロックするアプリと、集中したい時間（例: 60分）を選びます。</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div>
+                <h3>ロックを開始</h3>
+                <p>あとはタイマーが終わるまで集中。誘惑のアプリは開けません。</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="download" id="download">
+        <div class="container download-inner">
+          <h2>集中タイム、はじめよう。</h2>
+          <p>
+            iOS 向けアプリ「集中ロック」。App Store 公開後、こちらからダウンロードできます。
+          </p>
+          <a class="btn btn-primary btn-large" href="#" aria-disabled="true">App Store（準備中）</a>
+          <p class="fine-print">
+            ※ 価格・機能は App Store の表示に準じます。Screen Time の利用には iOS の対応バージョンが必要です。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> 集中ロック</p>
+        <p class="footer-note">このページはアプリ本体とは独立した静的サイトです（web/landing）。</p>
+      </div>
+    </footer>
+    <script src="carousel.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

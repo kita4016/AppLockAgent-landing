@@ -1,0 +1,746 @@
+/* 集中ロック — ランディング（静的 HTML/CSS） */
+
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --text-muted: #6e6e73;
+  --accent: #ff7a00;
+  --accent-dark: #e56a00;
+  --tint: #007aff;
+  --radius: 16px;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --max: 1080px;
+  --font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Noto Sans JP", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(245, 245, 247, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.logo-icon {
+  font-size: 1.25rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-small {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+}
+
+.btn-large {
+  padding: 0.85rem 1.75rem;
+  font-size: 1.05rem;
+}
+
+/* Hero */
+.hero {
+  padding: 2.5rem 0 3.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tint);
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0 0 1.5rem;
+  max-width: 36em;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Phone mock */
+.phone {
+  width: min(100%, 280px);
+  margin-inline: auto;
+  background: #1d1d1f;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+
+.phone-notch {
+  width: 36%;
+  height: 6px;
+  background: #333;
+  border-radius: 999px;
+  margin: 4px auto 12px;
+}
+
+.phone-screen {
+  background: var(--surface);
+  border-radius: 28px;
+  padding: 1.75rem 1.25rem;
+  min-height: 320px;
+}
+
+.phone-screen--carousel {
+  padding: 1rem 0.65rem 1.25rem;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.35s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.carousel-slide--shield {
+  position: relative;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.phone-screen--carousel .mock-ring {
+  width: 132px;
+  height: 132px;
+  margin: 0.25rem auto 0.5rem;
+  border-width: 8px;
+}
+
+.phone-screen--carousel .mock-time {
+  font-size: 1.55rem;
+}
+
+.carousel-ui {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.carousel-arrow {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--surface);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.15);
+}
+
+.carousel-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0;
+  min-height: 2.6em;
+  padding: 0 0.5rem;
+}
+
+.mock-ring {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  border: 10px solid rgba(0, 122, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.mock-lock {
+  font-size: 1.25rem;
+}
+
+.mock-time {
+  font-size: 2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.mock-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.mock-apps {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem;
+  background: #f2f2f7;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.mock-apps li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.mock-apps .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tint);
+  flex-shrink: 0;
+}
+
+.mock-apps--rows li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mock-apps--rows li:last-child {
+  border-bottom: none;
+}
+
+.app-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.app-icon--yt {
+  background: #ff0000;
+}
+
+.app-icon--tiktok {
+  background: #010101;
+}
+
+.app-icon--x {
+  background: #0f1419;
+  font-size: 0.75rem;
+}
+
+.mock-card {
+  background: #f2f2f7;
+  border-radius: var(--radius);
+  padding: 0.65rem 0.75rem;
+}
+
+.mock-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+.mock-card-title span {
+  font-weight: 500;
+}
+
+.mock-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: auto;
+  font-family: inherit;
+}
+
+.mock-btn--orange {
+  background: var(--accent);
+}
+
+.mock-btn--blue {
+  background: var(--tint);
+}
+
+.mock-btn--compact {
+  width: auto;
+  min-width: 5rem;
+  margin-top: 0.75rem;
+}
+
+.mock-nav-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.mock-nav-title--sm {
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.mock-list {
+  background: #f2f2f7;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mock-list-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.mock-muted {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+.mock-section-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.mock-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.mock-chips span {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.35rem 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.mock-chips .is-on {
+  background: var(--tint);
+  color: #fff;
+}
+
+.mock-picker {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.68rem;
+}
+
+.mock-picker li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.1rem 0.45rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mock-picker li .app-icon {
+  grid-row: span 2;
+}
+
+.mock-picker-name {
+  font-weight: 600;
+}
+
+.mock-picker .mock-muted {
+  grid-column: 2;
+}
+
+.mock-check {
+  grid-row: span 2;
+  grid-column: 3;
+  color: var(--tint);
+  font-weight: 700;
+}
+
+.mock-shield-blur {
+  position: absolute;
+  inset: 0.5rem;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #e8e8ed, #f5f5f7);
+  opacity: 0.9;
+}
+
+.mock-shield-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1rem 0.75rem;
+}
+
+.mock-shield-lock {
+  font-size: 1.75rem;
+}
+
+.mock-shield-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.35rem;
+}
+
+.mock-shield-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Sections */
+section h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.section-lead {
+  color: var(--text-muted);
+  margin: 0 0 2rem;
+  max-width: 40em;
+}
+
+.features {
+  padding: 3rem 0;
+  background: var(--surface);
+}
+
+.feature-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.feature-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.35rem;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.feature-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.how {
+  padding: 3rem 0;
+}
+
+.steps {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.steps li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--surface);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.steps p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.download {
+  padding: 3rem 0 4rem;
+}
+
+.download-inner {
+  text-align: center;
+  background: linear-gradient(145deg, #fff7ed, #ffffff);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.download-inner p {
+  color: var(--text-muted);
+  max-width: 32em;
+  margin: 0 auto 1.5rem;
+}
+
+.fine-print {
+  font-size: 0.8rem !important;
+  margin-top: 1rem !important;
+}
+
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-inner p {
+  margin: 0.25rem 0;
+}
+
+.footer-note {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Tablet+ */
+@media (min-width: 720px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-visual {
+    order: 2;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .steps li {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    padding: 4rem 0 5rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --text: #f5f5f7;
+    --text-muted: #a1a1a6;
+  }
+
+  .site-header {
+    background: rgba(0, 0, 0, 0.75);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .mock-apps,
+  .mock-card,
+  .mock-list {
+    background: #2c2c2e;
+  }
+
+  .carousel-arrow {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .carousel-dot {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .mock-shield-blur {
+    background: linear-gradient(160deg, #2c2c2e, #1c1c1e);
+  }
+
+  .mock-chips span {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .feature-card {
+    background: #2c2c2e;
+  }
+
+  .download-inner {
+    background: linear-gradient(145deg, #2a1f12, #1c1c1e);
+  }
+}
