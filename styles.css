@@ -268,6 +268,12 @@ a {
   justify-content: space-between;
 }
 
+.carousel-slide--home {
+  justify-content: flex-start;
+  gap: 0.4rem;
+  overflow-y: auto;
+}
+
 .carousel-slide--shield {
   position: relative;
   justify-content: center;
@@ -877,5 +883,15 @@ section h2 {
 
   .carousel-ui {
     margin-top: 0.75rem;
+  }
+
+  .carousel-slide--home .mock-chips span {
+    font-size: 0.58rem;
+    padding: 0.28rem 0;
+  }
+
+  .carousel-slide--home .mock-nav-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
   }
 }
