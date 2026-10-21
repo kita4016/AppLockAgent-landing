@@ -11,6 +11,8 @@
   --radius: 16px;
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
   --max: 1080px;
+  /* sticky ヘッダー分（#how などのアンカー scroll 用） */
+  --header-scroll-offset: 4.25rem;
   --font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
     "Noto Sans JP", sans-serif;
 }
@@ -23,8 +25,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-scroll-offset);
   color-scheme: light;
   overflow-x: clip;
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: var(--header-scroll-offset);
 }
 
 body {
